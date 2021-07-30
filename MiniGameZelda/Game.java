@@ -11,9 +11,8 @@ import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable, KeyListener{
-	
-	public static JFrame frame;
-	private final int WIDTH = 640, HEIGHT = 480;
+
+	private final int WIDTH = 480, HEIGHT = 480;
 	private final int SCALE = 4;
 	
 	public Player player;
@@ -86,6 +85,11 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			player.rigth = true;
 			
@@ -108,7 +112,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {
+	public void keyReleased(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			player.rigth = false;
 			
@@ -128,11 +132,6 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			player.down = false;
 			
 		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
