@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 
@@ -18,18 +19,21 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	public Player player;
 	public World world;
 
-	public Game() {
+	public Game() throws IOException {
 
 		this.addKeyListener(this);
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 
+		new Spritesheet();
 		player = new Player(32, 32);
 		world = new World();
+
 
 	}
 
 	public void tick() {
 		player.tick();
+
 	}
 
 	public void render() {
@@ -50,7 +54,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		bs.show();
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		Game game = new Game();
 		JFrame frame = new JFrame();
@@ -65,6 +69,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		frame.setVisible(true);
 
 		new Thread(game).start();
+	
 	}
 
 	public void run() {
@@ -111,6 +116,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			player.down = true;
 
 		}
+
 	}
 
 	@Override
